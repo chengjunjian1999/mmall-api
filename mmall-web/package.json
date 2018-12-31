@@ -1,0 +1,21 @@
+{
+  "name": "mmall-web",
+  "version": "1.0.0",
+  "description": "mmall",
+  "main": "mmall前端代码",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "webpack-core": "^0.6.9"
+  },
+  "devDependencies": {
+    "css-loader": "^2.0.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "style-loader": "^0.20.3",
+    "webpack": "^1.15.0"
+  }
+}

@@ -24,6 +24,17 @@
   </properties>
 
   <dependencies>
+    <!--依赖-->
+    <dependency>
+      <groupId>com.thetransactioncompany</groupId>
+      <artifactId>cors-filter</artifactId>
+      <version>1.7</version>
+    </dependency>
+    <dependency>
+      <groupId>com.thetransactioncompany</groupId>
+      <artifactId>java-property-utils</artifactId>
+      <version>1.9</version>
+    </dependency>
 
     <dependency>
       <groupId>org.apache.tomcat</groupId>

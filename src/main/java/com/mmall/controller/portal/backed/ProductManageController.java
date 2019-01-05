@@ -79,4 +79,18 @@ public class ProductManageController {
             return ServerResponse.createByErrorMessage("无权限操作");
         }
     }
+    @RequestMapping("search.do")
+    @ResponseBody
+    public ServerResponse search(HttpSession session,String productName,Integer productId,@RequestParam(value="pageNum",defaultValue = "1")Integer pageNum,@RequestParam(value = "pageSize",defaultValue = "10")Integer pageSize){
+        UserVo user = (UserVo)session.getAttribute(Const.CURRENT_USER);
+        if(user == null){
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),"用户未登录请登录");
+        }
+
+        if(userService.checkAdminRole(user).isSuccess()){
+            return productService.searchProduct(productName,productId,pageNum,pageSize);
+        }else{
+            return ServerResponse.createByErrorMessage("无权限操作");
+        }
+    }
 }

@@ -2,7 +2,11 @@ package com.mmall.vo;
 
 import java.math.BigDecimal;
 
+/**
+ * Created by geely
+ */
 public class ProductDetailVo {
+
     private Integer  id;
     private Integer categoryId;
     private String name;
@@ -131,45 +135,4 @@ public class ProductDetailVo {
     public void setParentCategoryId(Integer parentCategoryId) {
         this.parentCategoryId = parentCategoryId;
     }
-
-    public ProductDetailVo(Integer id, Integer categoryId, String name, String subtitle, String mainImage, String subImages, String detail, BigDecimal price, Integer stock, Integer status, String createTime, String updateTime, String imageHost, Integer parentCategoryId) {
-        this.id = id;
-        this.categoryId = categoryId;
-        this.name = name;
-        this.subtitle = subtitle;
-        this.mainImage = mainImage;
-        this.subImages = subImages;
-        this.detail = detail;
-        this.price = price;
-        this.stock = stock;
-        this.status = status;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.imageHost = imageHost;
-        this.parentCategoryId = parentCategoryId;
-    }
-
-    public ProductDetailVo(){
-        super();
-    }
-    @Override
-    public String toString() {
-        return "ProductDetailVo{" +
-                "id=" + id +
-                ", categoryId=" + categoryId +
-                ", name='" + name + '\'' +
-                ", subtitle='" + subtitle + '\'' +
-                ", mainImage='" + mainImage + '\'' +
-                ", subImages='" + subImages + '\'' +
-                ", detail='" + detail + '\'' +
-                ", price=" + price +
-                ", stock=" + stock +
-                ", status=" + status +
-                ", createTime='" + createTime + '\'' +
-                ", updateTime='" + updateTime + '\'' +
-                ", imageHost='" + imageHost + '\'' +
-                ", parentCategoryId=" + parentCategoryId +
-                '}';
-    }
-
 }

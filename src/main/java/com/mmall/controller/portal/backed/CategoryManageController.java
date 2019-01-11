@@ -21,8 +21,8 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/manage/category")
 public class CategoryManageController {
-
     private static Logger logger = LoggerFactory.getLogger(CategoryManageController.class);
+
     @Autowired
     private IUserService userService;
 

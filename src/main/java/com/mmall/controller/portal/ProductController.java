@@ -1,4 +1,4 @@
-package com.mmall.controller.portal.portal;
+package com.mmall.controller.portal;
 
 
 import com.github.pagehelper.PageInfo;

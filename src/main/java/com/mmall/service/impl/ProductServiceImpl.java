@@ -1,13 +1,11 @@
 package com.mmall.service.impl;
 
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.google.common.collect.Lists;
 import com.mmall.common.Const;
 import com.mmall.common.ResponseCode;
 import com.mmall.common.ServerResponse;
-import com.mmall.controller.portal.backed.CategoryManageController;
 import com.mmall.dao.CategoryMapper;
 import com.mmall.dao.ProductMapper;
 import com.mmall.pojo.Category;
@@ -26,7 +24,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
+
 @Service("iProductService")
 public class ProductServiceImpl implements IProductService {
     private static Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);

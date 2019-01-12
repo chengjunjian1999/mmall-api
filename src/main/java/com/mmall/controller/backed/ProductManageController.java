@@ -1,4 +1,4 @@
-package com.mmall.controller.portal.backed;
+package com.mmall.controller.backed;
 
 
 import com.mmall.common.Const;

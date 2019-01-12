@@ -1,9 +1,8 @@
-package com.mmall.controller.portal.backed;
+package com.mmall.controller.backed;
 
 import com.mmall.common.Const;
 import com.mmall.common.ResponseCode;
 import com.mmall.common.ServerResponse;
-import com.mmall.pojo.User;
 import com.mmall.service.ICategoryService;
 import com.mmall.service.IUserService;
 import com.mmall.vo.UserVo;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.imageio.spi.ServiceRegistry;
 import javax.servlet.http.HttpSession;
 
 @Controller

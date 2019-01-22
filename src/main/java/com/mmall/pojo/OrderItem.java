@@ -1,18 +1,19 @@
 package com.mmall.pojo;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.Date;
-@Data
-@NoArgsConstructor
+
+@Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class OrderItem {
     private Integer id;
-
-    private Integer userId;
 
     private Long orderNo;
 
@@ -31,6 +32,8 @@ public class OrderItem {
     private Date createTime;
 
     private Date updateTime;
+
+    private Integer userId;
 
 
 }

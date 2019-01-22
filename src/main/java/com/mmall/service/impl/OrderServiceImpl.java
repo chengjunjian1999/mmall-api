@@ -75,8 +75,8 @@ public class OrderServiceImpl implements IOrderService {
          */
         return new AlipayTradeServiceImpl.ClientBuilder().build();
     }
-
     @Autowired
+
     private  AlipayTradeService tradeService;
     //static {
 

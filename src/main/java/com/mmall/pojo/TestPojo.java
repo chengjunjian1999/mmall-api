@@ -3,6 +3,7 @@ package com.mmall.pojo;
 /**
  * Created by geely
  */
+
 public class TestPojo {
     private String name;
     private Integer id;

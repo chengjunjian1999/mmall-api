@@ -1,16 +1,19 @@
 package com.mmall.pojo;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.Setter;
 
 import java.util.Date;
-@Data
+
+
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = "updateTime")
 public class Cart {
+
     private Integer id;
 
     private Integer userId;
@@ -24,6 +27,5 @@ public class Cart {
     private Date createTime;
 
     private Date updateTime;
-
 
 }

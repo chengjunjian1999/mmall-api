@@ -49,7 +49,7 @@ public class UserController {
         ServerResponse<UserVo> response = iUserService.login(username,password);
         if(response.isSuccess()){
             CookieUtil.writeLoginToken(res,session.getId());
-
+//            CookieUtil.readLoginToken(req);
 //            CookieUtil.delLoginToken(req,res);
             RedisPoolUtil.setEx(session.getId(),JsonUtil.obj2String(response.getData()),Const.RedisCacheExtime.REDIS_SESSION_EXTIME);
         }

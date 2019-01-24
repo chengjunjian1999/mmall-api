@@ -11,10 +11,9 @@ public class Test {
     class C extends A{}
 
     class D extends B{}
-
     public static void main(String[] args) {
 
-        A obj = new Test().new B();
+        A obj = new Test().new C();
         System.out.println(obj instanceof B);
 
         System.out.println(obj instanceof C);
@@ -22,6 +21,5 @@ public class Test {
         System.out.println(obj instanceof D);
 
         System.out.println(obj instanceof A);
-
     }
 }

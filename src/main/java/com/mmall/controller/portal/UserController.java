@@ -22,13 +22,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.Serializable;
 
 /**
  *
  */
 @Controller
 @RequestMapping("/user/")
-public class UserController {
+public class UserController implements Serializable {
 
     private static Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
@@ -44,9 +45,9 @@ public class UserController {
      */
     @RequestMapping(value = "login.do",method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse<UserVo> login(String username, String password, HttpSession session, HttpServletResponse res, HttpServletRequest req){
+    public ServerResponse<User> login(String username, String password, HttpSession session, HttpServletResponse res, HttpServletRequest req){
         logger.info("输入的用户名是："+username+","+"输入的密码是"+password);
-        ServerResponse<UserVo> response = iUserService.login(username,password);
+        ServerResponse<User> response = iUserService.login(username,password);
         if(response.isSuccess()){
             CookieUtil.writeLoginToken(res,session.getId());
 //            CookieUtil.readLoginToken(req);

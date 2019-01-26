@@ -9,7 +9,7 @@ import com.mmall.vo.UserVo;
  */
 public interface IUserService {
 
-    ServerResponse<UserVo> login(String username, String password);
+    ServerResponse<User> login(String username, String password);
 
     ServerResponse<String> register(User user);
 

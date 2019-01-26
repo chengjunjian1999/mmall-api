@@ -25,7 +25,7 @@ public class UserServiceImpl implements IUserService {
 
 
     @Override
-    public ServerResponse<UserVo> login(String username, String password) {
+    public ServerResponse login(String username, String password) {
         int resultCount = userMapper.checkUsername(username);
         if(resultCount == 0 ){
             return ServerResponse.createByErrorMessage("用户名不存在");
@@ -36,19 +36,9 @@ public class UserServiceImpl implements IUserService {
         if(user == null){
             return ServerResponse.createByErrorMessage("密码错误");
         }
+        user.setPassword("null");
 
-        user.setPassword(org.apache.commons.lang3.StringUtils.EMPTY);
-        UserVo userVo = new UserVo();
-        userVo.setId(user.getId());
-        userVo.setUsername(user.getUsername());
-        userVo.setEmail(user.getEmail());
-        userVo.setQuestion(user.getQuestion());
-        userVo.setAnswer(user.getAnswer());
-        userVo.setPhone(user.getPhone());
-        userVo.setRole(user.getRole());
-        userVo.setCreateTime(user.getCreateTime());
-        userVo.setUpdateTime(user.getUpdateTime());
-        return ServerResponse.createBySuccess("登录成功",userVo);
+        return ServerResponse.createBySuccess("登录成功",user);
     }
 
 

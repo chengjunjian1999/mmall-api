@@ -29,7 +29,7 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/user/springsession/")
 public class UserSpringSessionController {
 
-    private static Logger logger = LoggerFactory.getLogger(UserSpringSessionController.class);
+
     @Autowired
     private IUserService iUserService;
 
@@ -41,37 +41,52 @@ public class UserSpringSessionController {
      * @param session
      * @return
      */
-    @RequestMapping(value = "login.do",method = RequestMethod.POST)
+    @RequestMapping(value = "login.do",method = RequestMethod.GET)
     @ResponseBody
-    public ServerResponse<UserVo> login(String username, String password, HttpSession session, HttpServletResponse res, HttpServletRequest req){
-        logger.info("输入的用户名是："+username+","+"输入的密码是"+password);
-        ServerResponse<UserVo> response = iUserService.login(username,password);
+    public ServerResponse<User> login(String username, String password, HttpSession session, HttpServletResponse httpServletResponse){
+
+        //测试全局异常
+        int i = 0;
+        int j = 666/i;
+
+
+        ServerResponse<User> response = iUserService.login(username,password);
         if(response.isSuccess()){
+
             session.setAttribute(Const.CURRENT_USER,response.getData());
+//            CookieUtil.writeLoginToken(httpServletResponse,session.getId());
+//            RedisShardedPoolUtil.setEx(session.getId(), JsonUtil.obj2String(response.getData()),Const.RedisCacheExtime.REDIS_SESSION_EXTIME);
+
         }
         return response;
     }
 
-    @RequestMapping(value = "logout.do",method = RequestMethod.POST)
+    @RequestMapping(value = "logout.do",method = RequestMethod.GET)
     @ResponseBody
-    public ServerResponse<String> logout(HttpServletRequest req,HttpServletResponse res){
-        String loginToken = CookieUtil.readLoginToken(req);
-        CookieUtil.delLoginToken(req,res);
-        RedisPoolUtil.del(loginToken);
+    public ServerResponse<String> logout(HttpSession session,HttpServletRequest httpServletRequest,HttpServletResponse httpServletResponse){
+//        String loginToken = CookieUtil.readLoginToken(httpServletRequest);
+//        CookieUtil.delLoginToken(httpServletRequest,httpServletResponse);
+//        RedisShardedPoolUtil.del(loginToken);
+
+        session.removeAttribute(Const.CURRENT_USER);
+
         return ServerResponse.createBySuccess();
     }
 
-
-    @RequestMapping(value = "get_user_info.do",method = RequestMethod.POST)
+    @RequestMapping(value = "get_user_info.do",method = RequestMethod.GET)
     @ResponseBody
-    public ServerResponse<User> getUserInfo(HttpServletRequest req){
-        String loginToken = CookieUtil.readLoginToken(req);
-        if(StringUtils.isEmpty(loginToken)){
-            return ServerResponse.createByErrorMessage("用户未登录,无法获取当前用户的信息");
-        }
-        String userJson = RedisPoolUtil.get(loginToken);
-        User user = JsonUtil.string2Obj(userJson,User.class);
-        if(user !=null){
+    public ServerResponse<User> getUserInfo(HttpSession session,HttpServletRequest httpServletRequest){
+
+//        String loginToken = CookieUtil.readLoginToken(httpServletRequest);
+//        if(StringUtils.isEmpty(loginToken)){
+//            return ServerResponse.createByErrorMessage("用户未登录,无法获取当前用户的信息");
+//        }
+//        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
+//        User user = JsonUtil.string2Obj(userJsonStr,User.class);
+
+        User user = (User)session.getAttribute(Const.CURRENT_USER);
+
+        if(user != null){
             return ServerResponse.createBySuccess(user);
         }
         return ServerResponse.createByErrorMessage("用户未登录,无法获取当前用户的信息");
@@ -80,4 +95,32 @@ public class UserSpringSessionController {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
